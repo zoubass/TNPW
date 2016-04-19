@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
@@ -25,8 +26,8 @@
         <property name="poolPreparedStatements" value="true"/>
     </bean>
 
-    <bean id="hibernate3AnnotatedSessionFactory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+    <bean id="hibernateSessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="annotatedClasses">
             <list>
@@ -43,8 +44,8 @@
     </bean>
 
     <bean id="userDao" class="neo.dao.impl.UserDaoImpl">
-        <property name="sessionFactory"
-                  ref="org.springframework.orm.hibernate5.annotation.AnnotationSessionFactoryBean"/>
+        <property name="session"
+                  ref="hibernateSessionFactory"/>
     </bean>
 
     <!--<tx:annotation-driven proxy-target-class="true"-->

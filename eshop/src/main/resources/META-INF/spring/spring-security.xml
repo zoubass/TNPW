@@ -18,10 +18,10 @@
             <!--"select username,password, enabled from users where username=?"-->
             <!--authorities-by-username-query=-->
             <!--"select username, role from user_roles where username =?  " />-->
-            <user-service>
-                <user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
-                <user name="bob" password="bobspassword" authorities="ROLE_USER"/>
-            </user-service>
+            <!--<user-service>-->
+                <!--<user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>-->
+                <!--<user name="bob" password="bobspassword" authorities="ROLE_USER"/>-->
+            <!--</user-service>-->
         </authentication-provider>
     </authentication-manager>
 
