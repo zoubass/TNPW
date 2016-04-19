@@ -11,6 +11,6 @@ create table TUser(
   create table TAuthority (
 	  user_id int,
       authority nvarchar(50) not null,
-      constraint fk_authorities_users foreign key(user_id) references TUser(id) on delete cascade);
+      constraint fk_authorities_users foreign key(user_id) references TUser(username) on delete cascade);
       create unique index ix_auth_username on Tauthority(user_id,authority);
 GO

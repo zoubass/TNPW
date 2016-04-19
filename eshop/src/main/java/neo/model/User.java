@@ -11,7 +11,7 @@ public class User {
     private int id;
     private String username;
     private String password;
-    private int enabled;
+    private boolean enabled;
 
     @Id
     @GeneratedValue
@@ -31,7 +31,7 @@ public class User {
     }
 
     @Column(name = "enabled")
-    public int getEnabled() {
+    public boolean getEnabled() {
         return enabled;
     }
 
@@ -47,7 +47,7 @@ public class User {
         this.password = password;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 }
