@@ -47,7 +47,7 @@
     </bean>
 
     <bean id="userDao" class="neo.dao.impl.UserDaoImpl">
-        <property name="sessionFactory"
+        <property name="session"
                   ref="hibernateSessionFactory"/>
     </bean>
 
