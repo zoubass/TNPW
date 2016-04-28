@@ -16,6 +16,12 @@ public class WebController {
     }
 
 
+    @RequestMapping("/index")
+    public String showHomePage(Model model) {
+        System.out.println("ere");
+        return "index";
+    }
+
     @RequestMapping("/error")
     public String error(HttpServletRequest request, Model model) {
         model.addAttribute("errorCode", request.getAttribute("javax.servlet.error.status_code"));

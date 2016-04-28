@@ -9,16 +9,17 @@
 
     <http auto-config='true' use-expressions="true">
         <intercept-url pattern="/**" access="permitAll"/>
-        <intercept-url pattern="/admin/**" access="ROLE_USER, ROLE_ADMIN" requires-channel="https" />
-        <form-login login-page='/login'/>
+        <intercept-url pattern="/admin/**" access="hasRole(ROLE_USER, ROLE_ADMIN)"/>
+        <form-login login-page="/login" login-processing-url="/j_spring_security_check" authentication-failure-url="/login-error.html"/>
+        <logout/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource"/>
             <!--<user-service>-->
-                <!--<user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>-->
-                <!--<user name="bob" password="bobspassword" authorities="ROLE_USER"/>-->
+            <!--<user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>-->
+            <!--<user name="bob" password="bobspassword" authorities="ROLE_USER"/>-->
             <!--</user-service>-->
         </authentication-provider>
     </authentication-manager>
