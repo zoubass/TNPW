@@ -1,25 +1,28 @@
 package neo.controller;
 
+
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller()
 public class WebController {
+    private final Logger log = Logger.getLogger(getClass());
 
     @RequestMapping("/admin")
     public String showAdminPage(Model model) {
+        System.out.println("I'm in admin.");
         return "admin";
     }
 
 
-    @RequestMapping("/index")
+    @RequestMapping("/home")
     public String showHomePage(Model model) {
-        System.out.println("ere");
-        return "index";
+        log.debug("you are on home page.");
+        return "home";
     }
 
     @RequestMapping("/error")

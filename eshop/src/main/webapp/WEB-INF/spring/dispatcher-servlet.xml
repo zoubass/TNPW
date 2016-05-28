@@ -15,12 +15,17 @@
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
+    <mvc:resources location="WEB-INF/templates/img/" mapping="/img/**" />
+    <mvc:resources location="WEB-INF/templates/css/" mapping="/css/**" />
+    <mvc:resources location="WEB-INF/templates/fonts/" mapping="/fonts/**" />
+    <mvc:resources location="WEB-INF/templates/js/" mapping="/js/**" />
+
     <bean id="templateResolver"
           class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/templates/"/>
         <property name="suffix" value=".html"/>
         <property name="templateMode" value="HTML5"/>
-        <property name="cacheable" value="true" />
+        <property name="cacheable" value="false" />
     </bean>
     <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver"/>

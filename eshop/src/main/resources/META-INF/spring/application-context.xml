@@ -47,10 +47,11 @@
     </bean>
 
     <bean id="userDao" class="neo.dao.impl.UserDaoImpl">
-        <property name="session"
-                  ref="hibernateSessionFactory"/>
-    </bean>
+    <property name="session"
+              ref="hibernateSessionFactory"/>
+</bean>
 
+    <bean id="loginSuccess" class="neo.handler.LoginSuccessHandler" />
     <!--<tx:annotation-driven proxy-target-class="true"-->
     <!--transaction-manager="txManager"/>-->
 
