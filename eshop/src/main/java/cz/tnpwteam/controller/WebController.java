@@ -1,7 +1,10 @@
-package neo.controller;
+package cz.tnpwteam.controller;
 
 
+import cz.tnpwteam.dao.UserRepository;
+import cz.tnpwteam.model.User;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +15,25 @@ import javax.servlet.http.HttpServletRequest;
 public class WebController {
     private final Logger log = Logger.getLogger(getClass());
 
+    @Autowired
+    private UserRepository userRepo;
+
     @RequestMapping("/admin")
     public String showAdminPage(Model model) {
         System.out.println("I'm in admin.");
+        Iterable<User> users = userRepo.findAll();
         return "admin";
     }
 
+    @RequestMapping("/{id}")
+    public String doSomethingWithUser() {
+//        TODO: zmenit stranku
+        return "admin";
+    }
 
     @RequestMapping("/home")
     public String showHomePage(Model model) {
-        log.debug("you are on home page.");
+        System.out.println("you are on home page");
         return "home";
     }
 

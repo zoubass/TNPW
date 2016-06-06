@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config/>
-    <context:component-scan base-package="neo.controller"/>
+    <context:component-scan base-package="cz.tnpwteam.controller"/>
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 

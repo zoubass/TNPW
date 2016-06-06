@@ -1,4 +1,4 @@
-package neo.model;
+package cz.tnpwteam.model;
 
 import java.util.List;
 

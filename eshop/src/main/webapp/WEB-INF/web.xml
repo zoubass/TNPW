@@ -9,12 +9,10 @@
             classpath*:META-INF/spring/application-context.xml
         </param-value>
     </context-param>
-
     <!--<context-param>-->
-        <!--<param-name>log4j-config-location</param-name>-->
-        <!--<param-value>classpath*:config/log4j.properties</param-value>-->
+    <!--<param-name>log4j-config-location</param-name>-->
+    <!--<param-value>classpath*:config/log4j.properties</param-value>-->
     <!--</context-param>-->
-
     <listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener
