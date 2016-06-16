@@ -1,9 +1,7 @@
 package cz.tnpwteam.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 /**
  * Created by Admin on 28.5.2016.
@@ -13,11 +11,12 @@ import javax.persistence.Table;
 public class Product {
     private Long id;
     private String type;
-    private Integer price;
+    private BigDecimal price;
     private String category;
 
 
     @Id
+    @GeneratedValue
     @Column(name = "id", nullable = false)
     public Long getId() {
         return id;
@@ -28,13 +27,13 @@ public class Product {
         return category;
     }
 
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     public String getType() {
         return type;
     }
 
-    @Column(name = "price")
-    public Integer getPrice() {
+    @Column(name = "price", nullable = false)
+    public BigDecimal getPrice() {
         return price;
     }
 
@@ -47,7 +46,7 @@ public class Product {
     }
 
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

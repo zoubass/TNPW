@@ -1,9 +1,46 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Error page</title>
-</head>
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head th:replace="fragments::head"></head>
 <body>
-    <h1 th:text="${errorCode}">500</h1>
-    <p th:text="${errorMessage}">java.lang.NullPointerException</p>
+<div id="page">
+    <div th:replace="fragments :: header"></div>
+    <div id="body" class="home">
+        <div class="header">
+            <img th:th:src="@{bg-home.jpg}" alt=""/>
+            <div>
+                <a href="products.html">oooooooPs</a>
+            </div>
+        </div>
+        <div class="body">
+            <div>
+                Ou to je nemilé.
+            </div>
+        </div>
+        <div class="footer">
+            <div>
+                <ul>
+                    <li>
+                        <a href="products.html" class="product"></a>
+                        <h1>PRODUCTS</h1>
+                    </li>
+                    <li>
+                        <a href="about.html" class="about"></a>
+                        <h1>OUR STORY</h1>
+                    </li>
+                    <li>
+                        <a href="products.html" class="flavor"></a>
+                        <h1>FLAVORS</h1>
+                    </li>
+                    <li>
+                        <a href="contact.html" class="contact"></a>
+                        <h1>OUR LOCATION</h1>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div th:replace="fragments::footer"></div>
+    </div>
+</div>
 </body>
 </html>

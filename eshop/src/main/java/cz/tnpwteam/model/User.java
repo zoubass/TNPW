@@ -1,6 +1,7 @@
 package cz.tnpwteam.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Admin on 19.4.2016.
@@ -11,6 +12,7 @@ public class User {
     private String username;
     private String password;
     private boolean enabled;
+//    private List<Authorities> authorities;
 
     @Id
     @Column(name = "username", nullable = false)
@@ -27,6 +29,8 @@ public class User {
     public boolean getEnabled() {
         return enabled;
     }
+
+//    TODO: dodelat authorities pro users!!!! dulezite
 
     public void setUsername(String username) {
         this.username = username;

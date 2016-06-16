@@ -44,8 +44,9 @@
         <property name="annotatedClasses">
             <list>
                 <value>cz.tnpwteam.model.User</value>
-                <!--<value>cz.tnpwteam.model.Cart</value>-->
-                <!--<value>cz.tnpwteam.model.Product</value>-->
+                <value>cz.tnpwteam.model.Authorities</value>
+                <value>cz.tnpwteam.model.Product</value>
+                <value>cz.tnpwteam.model.Order</value>
             </list>
         </property>
         <property name="hibernateProperties">

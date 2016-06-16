@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>contact - Frozen Yogurt Shop</title>
+    <link rel="stylesheet" href="../css/style.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="../css/mobile.css"/>
+    <script src="../js/mobile.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="page">
+    <div th:replace="fragments::header"></div>
+    <div id="body" class="contact">
+        <div class="header">
+            <div>
+                <h1>Administrace produktů</h1>
+            </div>
+        </div>
+        <div class="body">
+            <div>
+                <div>
+                    <img src="images/check-in.png" alt=""/>
+                    <h1>UNIT 0123 , ABC BUILDING, BUSSINESS PARK</h1>
+                    <p>If you're having problems editing this website template, then don't hesitate to ask for help on
+                        the Forums.</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <h1>Vložit produkt</h1>
+                <form th:action="@{/product/add}" th:object="${product}" method="post">
+                    <input type="text" name="Type" value="Type" onblur="this.value=!this.value?'Product name':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{type}"/>
+                    <input type="text" name="Price" value="Price" onblur="this.value=!this.value?'Price':this.value;"  onfocus="this.select()" onclick="this.value='';" th:field="*{price}"/>
+                    <input type="text" name="Category" value="Category" onblur="this.value=!this.value?'Category':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{category}"/>
+                        <textarea name="meassage" cols="50" rows="7"
+                                  th:if="!isValidInput">Zadané hodnoty jsou nevalidní.</textarea>
+                    <input type="submit" value="Send" id="submit"/>
+                </form>
+
+            </div>
+            <div class="section">
+                <h1>Proste vlozit produkt</h1>
+                <p>Jeste neni vyresene jakym způsobem dostavat obrazek k produktu, jelikoz se mi do toho tedka nechce tak to tu proste neni.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <h1>Vložit produkt</h1>
+                <form th:action="@{/product/search}" th:object="${product}" method="post">
+                    <input type="text" name="Type" value="Type" onblur="this.value=!this.value?'Product name':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{type}"/>
+                    <input type="text" name="Price" value="Price" onblur="this.value=!this.value?'Price':this.value;"  onfocus="this.select()" onclick="this.value='';" th:field="*{price}"/>
+                    <input type="text" name="Category" value="Category" onblur="this.value=!this.value?'Category':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{category}"/>
+                        <textarea name="meassage" cols="50" rows="7"
+                                  th:if="!isValidInput">Zadané hodnoty jsou nevalidní.</textarea>
+                    <input type="submit" value="Send" id="submit"/>
+                </form>
+
+            </div>
+            <div class="section">
+                <h1>Zadejte kriteria pro vyhledani uzivatelu</h1>
+                <p>V případě nevyplnění pole se vyhledávají všechny produkty</p>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div>
+            <div class="connect">
+                <a href="http://freewebsitetemplates.com/go/facebook/" class="facebook">facebook</a>
+                <a href="http://freewebsitetemplates.com/go/twitter/" class="twitter">twitter</a>
+                <a href="http://freewebsitetemplates.com/go/googleplus/" class="googleplus">googleplus</a>
+                <a href="http://pinterest.com/fwtemplates/" class="pinterest">pinterest</a>
+            </div>
+            <p>&copy; 2023 Freeeze. All Rights Reserved.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
