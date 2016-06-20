@@ -25,7 +25,7 @@
                         <textarea name="meassage" cols="50" rows="7"
                                   th:if="!isValidInput">Zadané hodnoty jsou nevalidní.</textarea>
                     <label th:text="${success}"></label>
-                    <input type="submit" value="Send" id="submit"/>
+                    <input type="submit" value="Vytvořit" id="submit"/>
                 </form>
 
             </div>
@@ -44,7 +44,7 @@
                     <input type="text" name="Category" value="" />
                         <textarea name="meassage" cols="50" rows="7"
                                   th:if="!isValidInput">Zadané hodnoty jsou nevalidní.</textarea>
-                    <input type="submit" value="Send" id="submit"/>
+                    <input type="submit" value="Vyhledat" id="submit"/>
                 </form>
                 <p/>
                 <table class="table-fill" title="Výsledek hledání" th:unless="${#lists.isEmpty(products)}">
@@ -66,7 +66,7 @@
                 </table>
             </div>
             <div class="section">
-                <h1>Zadejte kriteria pro vyhledani uzivatelu</h1>
+                <h1>Zadejte kriteria pro vyhledání produktů</h1>
                 <p>V případě nevyplnění pole se vyhledávají všechny produkty</p>
             </div>
         </div>

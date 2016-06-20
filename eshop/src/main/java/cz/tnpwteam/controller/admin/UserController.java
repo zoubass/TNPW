@@ -46,11 +46,13 @@ public class UserController {
         return "admin/user";
     }
 
-    @RequestMapping(value = "/removeUser", method = RequestMethod.POST)
-    public String remove(Model model, @ModelAttribute User u) {
-        userRepo.save(u);
+    @RequestMapping(value = "/removeUser", method = RequestMethod.GET)
+    public String remove(Model model, @RequestParam String username) {
+        User u = userRepo.filterByUsername(username).get(0);
+        userRepo.delete(u);
         model.addAttribute("isValidInput", true);
         model.addAttribute("user", new User());
+        model.addAttribute("userDto", new UserDto());
         model.addAttribute("authorities", AuthoritiesEnum.values());
         return "admin/user";
     }
@@ -58,7 +60,7 @@ public class UserController {
     @RequestMapping(value = "/showUsers", method = RequestMethod.POST)
     public String getUser(Model model, @ModelAttribute UserDto dto) {
         //TODO:
-        List<Object> results = authorityRepo.filterByDto(dto.getUser().getUsername(), dto.getAuthorities().getAuthority());
+        List<User> results = userRepo.filterByUsername(dto.getUser().getUsername());
         model.addAttribute("results", results);
         model.addAttribute("authorities", AuthoritiesEnum.values());
         model.addAttribute("userDto", new UserDto());

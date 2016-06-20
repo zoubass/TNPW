@@ -2,9 +2,6 @@
 <!-- Website template by freewebsitetemplates.com -->
 <html>
 <head th:replace="fragments::head"></head>
-
-<!--<div th:replace="fragments::head"></div>-->
-
 <body>
 <div id="page">
     <div th:replace="fragments::header"></div>
@@ -17,55 +14,60 @@
 
         <div class="footer">
             <div class="contact">
-                <h1>Přidej uzivatele</h1>
+                <h1>Přidej uživatele</h1>
                 <form th:action="@{addUser}" th:object="${userDto}" method="post">
-                    <input type="text" name="Name" onblur="this.value=!this.value?'Username':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{user.username}"/>
-                    <input type="text" name="Email" onblur="this.value=!this.value?'Password':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{user.password}"/>
-                    <input type="text" name="Subject" onblur="this.value=!this.value?'Enabled':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{user.enabled}"/>
+                    <input type="text" name="Name" onblur="this.value=!this.value?'Username':this.value;"
+                           onfocus="this.select()" onclick="this.value='';" th:field="*{user.username}"/>
+                    <input type="text" name="Email" onblur="this.value=!this.value?'Password':this.value;"
+                           onfocus="this.select()" onclick="this.value='';" th:field="*{user.password}"/>
+                    <input type="text" name="Subject" onblur="this.value=!this.value?'Enabled':this.value;"
+                           onfocus="this.select()" onclick="this.value='';" th:field="*{user.enabled}"/>
                     <select type="text" name="Authorities" th:field="*{authorities.authority}">
-                        <option th:each="a : ${T(cz.tnpwteam.model.AuthoritiesEnum).values()}" th:value="${a}" th:text="${a}"></option>
+                        <option th:each="a : ${T(cz.tnpwteam.model.AuthoritiesEnum).values()}" th:value="${a}"
+                                th:text="${a}"></option>
                     </select>
-                        <p/>
+                    <p/>
                     <!--<label class="error" name="meassage"  th:if="${!isValidInput}">Zadané hodnoty jsou nevalidní.</label>-->
                     <label th:text="${success}"></label>
-                    <input type="submit" value="submit" id="submit"/>
+                    <input type="submit" value="Vytvořit" id="submit"/>
                 </form>
             </div>
             <div class="section">
-                <h1>Proste vlozit produkt</h1>
-                <p>Jeste neni vyresene jakym způsobem dostavat obrazek k produktu, jelikoz se mi do toho tedka nechce tak to tu proste neni.</p>
+                <h1>Vložte uživatele</h1>
+                <p>Pro vložení uživatele zadejte postupně username, password, zda je povolený a roli.</p>
             </div>
         </div>
         <div class="footer">
             <div class="contact">
-            <h1>Vyhledej uzivatele</h1>
-            <form th:action="@{showUsers}" th:object="${userDto}" method="post">
-                <input type="text" name="Name" onblur="this.value=!this.value?'Username':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{user.username}"/>
-                <select type="text" name="Authorities" th:field="*{authorities.authority}" >
-                    <option th:each="a : ${T(cz.tnpwteam.model.AuthoritiesEnum).values()}" th:value="${a}" th:text="${a}"></option>
-                </select>
+                <h1>Vyhledej uzivatele</h1>
+                <form th:action="@{showUsers}" th:object="${userDto}" method="post">
+                    <input type="text" name="Name" th:field="*{user.username}"/>
+                    <!--<select type="text" name="Authorities" th:field="*{authorities.authority}" >-->
+                    <!--<option th:each="a : ${T(cz.tnpwteam.model.AuthoritiesEnum).values()}" th:value="${a}" th:text="${a}"></option>-->
+                    <!--</select>-->
+                    <p/>
+                    <!--<label class="error" name="meassage" th:if="${!isValidInput}">Zadané hodnoty jsou nevalidní.</label>-->
+                    <input type="submit" value="Hledat" id="submit"/>
+                </form>
                 <p/>
-                <!--<label class="error" name="meassage" th:if="${!isValidInput}">Zadané hodnoty jsou nevalidní.</label>-->
-                <input type="submit" value="Hledat" id="submit"/>
-            </form>
                 <table th:unless="${#lists.isEmpty(results)}">
                     <tr>
                         <th>Username</th>
                         <th>Password</th>
                         <th>Enabled</th>
-                        <th>Authorities</th>
+                        <th>Odstranit</th>
                     </tr>
                     <tr th:each="user : ${results}">
                         <td th:text="${user.username}"></td>
                         <td th:text="${user.password}"></td>
                         <td th:text="${user.enabled}"></td>
-                        <td th:text="${user.authorities}"></td>
-                        <a th:href="@{/removeUser(id=${user.id})}">Odstranit</a></tr>
+                        <td><a th:href="@{/removeUser(username=${user.username})}">Odstranit</a></td>
+                    </tr>
                 </table>
             </div>
             <div class="section">
-                <h1>Zadejte kriteria pro vyhledani uzivatelu</h1>
-                <p>V případě nevyplnění pole se vyhledávají všechny produkty</p>
+                <h1>Zadejte kriteria pro vyhledání uživatelů</h1>
+                <p>V případě nevyplnění pole se vyhledají všichni uživatelé</p>
             </div>
         </div>
     </div>
