@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head th:replace="fragments::head"></head>
+<body>
+<div id="page">
+    <div th:replace="fragments::#header"></div>
+    <div id="body" class="contact">
+        <div class="header">
+            <div>
+                <h1>Vyplňte údaje o objednávce</h1>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <h1>Objednávka</h1>
+                <form th:action="@{/createOrder}" th:object="${order}" method="post">
+                    <label>E-mail</label>
+                    <input type="email" name="Email" th:field="*{userEmail}"/>
+                    <label>City</label>
+                    <input type="text" name="city" th:field="*{city}"/>
+                    <label>Street</label>
+                    <input type="text" name="street" th:field="*{street}"/>
+                    <label>PSC</label>
+                    <input type="text" name="psc" th:field="*{psc}"/>
+                    <label>Typ platby</label>
+                    <select type="text" name="PaymentType" th:field="*{orderType}">
+                        <option th:each="a : ${T(cz.tnpwteam.model.PaymentType).values()}" th:value="${a}"
+                                th:text="${a}"></option>
+                    </select>
+                    <label>Způsob doručení</label>
+                    <select type="text" name="Authorities" th:field="*{deliveryType}">
+                        <option th:each="a : ${T(cz.tnpwteam.model.DeliveryType).values()}" th:value="${a}"
+                                th:text="${a}"></option>
+                    </select>
+                    <input type="hidden" th:field="*{totalPrice}" th:text="${totalPrice}"/>
+                    <input type="hidden" th:field="*{totalProductCount}" th:text="${totalProductCount}"/>
+                    <p/>
+                    <label>Počet produktů:</label>
+                    <span class="total" name="PC" th:field="${totalProductCount}"
+                          th:text="${#numbers.formatDecimal(order.totalProductCount, 0, 'COMMA', 2, 'POINT')}"></span>
+                    <label>Celková cena:</label>
+                    <span class="total" name="tp"
+                          th:text="${#numbers.formatDecimal(order.totalPrice, 0, 'COMMA', 2, 'POINT')}"></span>
+                    <label class="error" th:if="${success}">Vaše objednávka byla úspěšně dokončena!</label>
+                    <input type="submit" value="Dokončit" id="submit" onclick="alert()"/>
+                </form>
+            </div>
+            <div class="section">
+                <h1>Děkujeme Vám za objednávku</h1>
+                <p>Po vyplnění všech údajů, prosím zkontrolujte. Po stisknutí tlačítka "Dokončit" se objednávka
+                    uloží.</p>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments::footer"></div>
+</div>
+<script>
+    function alert() {
+        alert("Vaše objednávka byla uložena a čeká na potvrzení.");
+    }
+</script>
+</body>
+</html>

@@ -4,43 +4,30 @@
 <head th:replace="fragments::head"></head>
 <body>
 <div id="page">
-    <div th:replace="fragments :: header"></div>
-    <div id="body" class="home">
+    <div th:replace="fragments :: #header"></div>
+    <div id="body">
         <div class="header">
-            <img th:th:src="@{bg-home.jpg}" alt=""/>
             <div>
-                <a href="products.html">oooooooPs</a>
+                <h1>ERROR</h1>
             </div>
         </div>
         <div class="body">
-            <div>
-                Ou to je nemilé.
-            </div>
+            <img src="images/bg-header-about.jpg" alt="" />
         </div>
         <div class="footer">
-            <div>
-                <ul>
-                    <li>
-                        <a href="products.html" class="product"></a>
-                        <h1>PRODUCTS</h1>
-                    </li>
-                    <li>
-                        <a href="about.html" class="about"></a>
-                        <h1>OUR STORY</h1>
-                    </li>
-                    <li>
-                        <a href="products.html" class="flavor"></a>
-                        <h1>FLAVORS</h1>
-                    </li>
-                    <li>
-                        <a href="contact.html" class="contact"></a>
-                        <h1>OUR LOCATION</h1>
-                    </li>
-                </ul>
+            <div class="sidebar">
+                <h1>E R R O R</h1>
+            </div>
+            <div class="article">
+                <h1>FAIL tohle se nemělo stát.... </h1>
+                <p>Důvod proč se to stalo: </p>
+                <span th:text="${errorMessage}"></span>
+                <p>Error code: </p>
+                <span th:text="${errorCode}"></span>
             </div>
         </div>
-        <div th:replace="fragments::footer"></div>
     </div>
+    <div th:replace="fragments::footer"></div>
 </div>
 </body>
 </html>

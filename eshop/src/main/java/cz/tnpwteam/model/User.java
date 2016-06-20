@@ -12,7 +12,6 @@ public class User {
     private String username;
     private String password;
     private boolean enabled;
-//    private List<Authorities> authorities;
 
     @Id
     @Column(name = "username", nullable = false)
@@ -29,8 +28,6 @@ public class User {
     public boolean getEnabled() {
         return enabled;
     }
-
-//    TODO: dodelat authorities pro users!!!! dulezite
 
     public void setUsername(String username) {
         this.username = username;

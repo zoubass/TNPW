@@ -1,12 +1,9 @@
 package cz.tnpwteam.controller;
 
 
-import cz.tnpwteam.dao.UserRepository;
 import cz.tnpwteam.model.Cart;
-import cz.tnpwteam.model.User;
 import cz.tnpwteam.utils.Util;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,10 +23,16 @@ public class WebController {
 
     @RequestMapping(value = {"/index", "/"})
     public String showHomePage(HttpServletRequest request, Model model) {
+        Cart cart = Util.getOrCreateCartForSession(request);
+        log.info("you are on home page");
+        return "index";
+    }
+    @RequestMapping(value = {"/products"})
+    public String showProductPage(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         Cart cart = Util.getOrCreateCartForSession(request);
-        System.out.println("you are on home page");
-        return "index";
+        log.debug("you are on product page");
+        return "offer";
     }
 
     @RequestMapping("/error")

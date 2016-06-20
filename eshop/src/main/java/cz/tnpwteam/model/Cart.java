@@ -27,13 +27,19 @@ public class Cart {
     }
 
     public void removeProduct(Product p) {
-        products.remove(p);
+        int index = 0;
+        for (Product prod : products) {
+            if (prod.getId().equals(p.getId())){
+                index = products.indexOf(prod);
+            }
+        }
+        products.remove(index);
     }
 
     public BigDecimal calculateTotalValue() {
-        BigDecimal total = new BigDecimal(BigDecimal.ROUND_HALF_UP);
+        BigDecimal total = new BigDecimal(0);
         for (Product prod : products) {
-            total.add(prod.getPrice());
+            total = total.add(prod.getPrice());
         }
         return total;
     }
@@ -64,7 +70,7 @@ public class Cart {
     }
 
     public BigDecimal getTotalValue() {
-        return totalValue;
+        return calculateTotalValue();
     }
 
     public void setTotalValue(BigDecimal totalValue) {
