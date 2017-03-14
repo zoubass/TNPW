@@ -15,9 +15,13 @@
             <div class="contact">
                 <h1>Vložit produkt</h1>
                 <form th:action="@{/addProductsDb}" th:object="${product}" method="post">
-                    <input type="text" name="Type" th:text="${YES}" value="Type" onblur="this.value=!this.value?'Product name':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{type}"/>
+                    <input type="text" name="Type" th:text="${type}" value="Type" onblur="this.value=!this.value?'Product name':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{type}"/>
+                    <span class="error" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">Name Error</span>
                     <input type="text" name="Price" value="Price" onblur="this.value=!this.value?'Price':this.value;"  onfocus="this.select()" onclick="this.value='';" th:field="*{price}"/>
+                    <span class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price Error</span>
                     <input type="text" name="Category" value="Category" onblur="this.value=!this.value?'Category':this.value;" onfocus="this.select()" onclick="this.value='';" th:field="*{category}"/>
+                    <span class="error" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Cat Error</span>
+                    <input type="hidden" name="Id" th:field="*{id}" th:text="${id}"/>
                     <select type="text" name="Images" th:field="*{image}" >
                     <option th:each="image : ${images}" th:value="${image}" th:text="${image}"></option>
                     </select>

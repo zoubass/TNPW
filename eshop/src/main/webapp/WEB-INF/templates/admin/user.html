@@ -18,17 +18,20 @@
                 <form th:action="@{addUser}" th:object="${userDto}" method="post">
                     <input type="text" name="Name" onblur="this.value=!this.value?'Username':this.value;"
                            onfocus="this.select()" onclick="this.value='';" th:field="*{user.username}"/>
+                    <span th:if="${#fields.hasErrors('user.username')}" th:errors="*{user.username}">Name Error</span>
                     <input type="text" name="Email" onblur="this.value=!this.value?'Password':this.value;"
                            onfocus="this.select()" onclick="this.value='';" th:field="*{user.password}"/>
+                    <span th:if="${#fields.hasErrors('user.password')}" th:errors="*{user.password}">Name Error</span>
                     <input type="text" name="Subject" onblur="this.value=!this.value?'Enabled':this.value;"
                            onfocus="this.select()" onclick="this.value='';" th:field="*{user.enabled}"/>
+                    <span th:if="${#fields.hasErrors('user.enabled')}" th:errors="*{user.enabled}">Name Error</span>
                     <select type="text" name="Authorities" th:field="*{authorities.authority}">
                         <option th:each="a : ${T(cz.tnpwteam.model.AuthoritiesEnum).values()}" th:value="${a}"
                                 th:text="${a}"></option>
                     </select>
                     <p/>
-                    <!--<label class="error" name="meassage"  th:if="${!isValidInput}">Zadané hodnoty jsou nevalidní.</label>-->
-                    <label th:text="${success}"></label>
+                    <label class="error" th:text="${message}"></label>
+                    <p/>
                     <input type="submit" value="Vytvořit" id="submit"/>
                 </form>
             </div>

@@ -1,6 +1,9 @@
 package cz.tnpwteam.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 
 /**
@@ -51,21 +54,27 @@ public class Product {
         this.orderId = orderId;
     }
 
+
     @Column(name = "category")
     public String getCategory() {
         return category;
     }
 
+    @NotNull
+    @Size(max = 100)
     @Column(name = "type", nullable = false)
     public String getType() {
         return type;
     }
 
+    @NotNull
+    @Min(0)
     @Column(name = "price", nullable = false)
     public BigDecimal getPrice() {
         return price;
     }
 
+    @NotNull
     @Column(name = "image", nullable = false)
     public String getImage() {
         return image;

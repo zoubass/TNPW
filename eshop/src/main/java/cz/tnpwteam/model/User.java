@@ -1,6 +1,8 @@
 package cz.tnpwteam.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -14,16 +16,19 @@ public class User {
     private boolean enabled;
 
     @Id
+    @NotNull
     @Column(name = "username", nullable = false)
     public String getUsername() {
         return username;
     }
 
+    @Size(max=50)
     @Column(name = "password")
     public String getPassword() {
         return password;
     }
 
+    @NotNull
     @Column(name = "enabled")
     public boolean getEnabled() {
         return enabled;

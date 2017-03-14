@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * Created by Admin on 15.6.2016.
+ * Created by Admin on 19.6.2016.
  */
 @Controller
 public class ProductController {
@@ -27,9 +27,13 @@ public class ProductController {
     private ProductRepository productRepo;
 
     @RequestMapping(value = "/addProductsDb", method = RequestMethod.POST)
-    public String addP(Model model, @ModelAttribute Product p) {
-        productRepo.save(p);
+    public String addP(Model model, @Valid @ModelAttribute Product p, BindingResult bindingResult) {
+        if (p.getId() != null) {
+            if (productRepo.exists(p.getId())) productRepo.delete(p);
+        }
         setModelAttributes(model, true);
+        if (bindingResult.hasErrors()) return "admin/product";
+        productRepo.save(p);
         model.addAttribute("succes", "Product uložen!");
         return "redirect:/product";
     }

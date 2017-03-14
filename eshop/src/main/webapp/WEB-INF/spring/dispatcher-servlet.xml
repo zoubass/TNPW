@@ -20,6 +20,9 @@
     <mvc:resources location="WEB-INF/templates/fonts/" mapping="/fonts/**" />
     <mvc:resources location="WEB-INF/templates/js/" mapping="/js/**" />
 
+    <bean id="validator"
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
     <bean id="templateResolver"
           class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
         <property name="prefix" value="/WEB-INF/templates/"/>

@@ -13,8 +13,9 @@ public class Authorities {
     private AuthoritiesEnum authority;
 
 
-    @OneToOne(cascade = CascadeType.ALL, targetEntity = User.class)
-    @JoinColumn(name = "username", nullable = false)
+//    @OneToOne(cascade = CascadeType.ALL, targetEntity = User.class)
+//    @JoinColumn(name = "username", nullable = false)
+    @Column(name="username")
     public String getUsername() {
         return username;
     }

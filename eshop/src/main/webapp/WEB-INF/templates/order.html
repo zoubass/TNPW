@@ -17,12 +17,20 @@
                 <form th:action="@{/createOrder}" th:object="${order}" method="post">
                     <label>E-mail</label>
                     <input type="email" name="Email" th:field="*{userEmail}"/>
+                    <span class="error" th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}">Name Error</span>
+
                     <label>City</label>
                     <input type="text" name="city" th:field="*{city}"/>
+                    <span class="error" th:if="${#fields.hasErrors('city')}" th:errors="*{city}">Name Error</span>
+
                     <label>Street</label>
                     <input type="text" name="street" th:field="*{street}"/>
+                    <span class="error" th:if="${#fields.hasErrors('street')}" th:errors="*{street}">Name Error</span>
+
                     <label>PSC</label>
                     <input type="text" name="psc" th:field="*{psc}"/>
+                    <span class="error" th:if="${#fields.hasErrors('psc')}" th:errors="*{psc}">Name Error</span>
+
                     <label>Typ platby</label>
                     <select type="text" name="PaymentType" th:field="*{orderType}">
                         <option th:each="a : ${T(cz.tnpwteam.model.PaymentType).values()}" th:value="${a}"

@@ -15,6 +15,9 @@ import java.util.List;
 @Transactional
 public interface ProductRepository extends CrudRepository<Product, Long> {
 
+    @Query("SELECT P from Product P where P.orderId =:idOrder")
+    List<Product> findByOrderId(@Param("idOrder") Long orderId);
+
     @Query("SELECT P from Product P where P.type like CONCAT(:name, '%') and P.category like CONCAT(:category, '%')")
     List<Product> findSpecificProducts(@Param("name") String name,/* @Param("price") BigDecimal price,*/ @Param("category") String category);
 }
