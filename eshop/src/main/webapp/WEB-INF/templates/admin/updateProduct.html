@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head th:replace="fragments::head"></head>
+<body>
+<div id="page">
+    <div th:replace="fragments::header"></div>
+    <div id="body" class="contact">
+        <div class="header">
+            <div>
+                <h1>Administrace produktů</h1>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <h1>Vložit produkt</h1>
+                <form th:action="@{product/add}" th:object="${product}" method="post">
+                    <input type="text" name="Type" value="type" th:text="${type}" th:field="*{type}"/>
+                    <input type="text" name="Price" value="Price" th:field="*{price}"/>
+                    <input type="text" name="Category" value="Category" th:field="*{category}"/>
+                    <select type="text" name="Images" th:field="*{image}">
+                        <option th:each="image : ${images}" th:value="${image}" th:text="${image}"></option>
+                    </select>
+                    <p/>
+                        <textarea name="meassage" cols="50" rows="7"
+                                  th:if="!isValidInput">Zadané hodnoty jsou nevalidní.</textarea>
+                    <label th:text="${success}"></label>
+                    <input type="submit" value="Send" id="submit"/>
+                </form>
+
+            </div>
+            <div class="section">
+                <h1>Vložit produkt</h1>
+                <p>Obrázek je možné přidat pomocí nadefinování jeho cesty, pro přidání úplně nového obrázku lze přidat
+                    obrázek na sdílené uložiště a odkazovat se na něj</p>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments::#footer"></div>
+</div>
+</body>
+</html>

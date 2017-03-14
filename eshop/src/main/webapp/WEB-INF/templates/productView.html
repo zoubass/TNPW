@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head th:replace="fragments::head"></head>
+
+<body>
+<div id="page">
+    <div th:replace="fragments::#header"></div>
+    <div id="body">
+        <div class="header">
+            <div>
+                <h1 th:text="${product.type}"></h1>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <h1 th:text="${product.category}"></h1>
+                    <p>Skvělé a zdravé jídlo</p>
+                </li>
+                <li>
+                    <img th:src="${product.image}" alt=""/>
+                    <h2 th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + ' Kč'"></h2>
+                    <!--<a th:href="@{/addProduct(id=${product.id})}">-->
+                    <!--</a>-->
+
+                    <div class="footer">
+                        <div class="contact">
+                            <form th:object="${product}" th:action="@{/addProduct}" method="post">
+                                <input type="hidden" th:field="*{id}" />
+                                <input type="hidden" th:field="*{type}" />
+                                <input type="hidden" th:field="*{price}" />
+                                <input type="hidden" th:field="*{category}"/>
+                                <input id="submit" type="submit" name="submit" value="Do košíku"/>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div th:replace="fragments::#footer"></div>
+</div>
+</body>
+</html>

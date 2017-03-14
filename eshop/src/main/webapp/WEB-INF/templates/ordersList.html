@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head th:replace="fragments::head"></head>
+<body>
+<div id="page">
+    <div th:replace="fragments::header"></div>
+    <div id="body" class="contact">
+        <div class="header">
+            <div>
+                <h1>Přehled objednávek</h1>
+            </div>
+        </div>
+        <div>
+            <table class="table-fill" title="Produkty objednávky" th:unless="${#lists.isEmpty(products)}">
+                <thead>
+                <tr>
+                    <th>Název produktu</th>
+                    <th>Kategorie</th>
+                    <th>Cena</th>
+                </tr>
+                </thead>
+                <tbody class="table-hover">
+                <tr th:each="p : ${products}">
+                    <td class="text-left" th:text="${p.type}"></td>
+                    <td class="text-left" th:text="${p.category}"></td>
+                    <td class="text-left"
+                        th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 2, 'POINT')} + ' Kč'"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="table-fill" title="Výsledek hledání" th:unless="${#lists.isEmpty(orders)}">
+                <tbody class="table-hover">
+                <tr>
+                    <th>Email</th>
+                    <th>Město</th>
+                    <th>Ulice</th>
+                    <th>PSČ</th>
+                    <th>Typ platby</th>
+                    <th>Typ dodání</th>
+                    <th>Celkem cena</th>
+                    <th>Produkty</th>
+                    <th>Odstranit</th>
+                </tr>
+                </tbody>
+                <tr th:each="o : ${orders}">
+                    <td class="text-left" th:text="${o.userEmail}"></td>
+                    <td class="text-left" th:text="${o.city}"></td>
+                    <td class="text-left" th:text="${o.street}"></td>
+                    <td class="text-left" th:text="${o.psc}"></td>
+                    <td class="text-left" th:text="${o.orderType}"></td>
+                    <td class="text-left" th:text="${o.deliveryType}"></td>
+                    <td class="text-left" th:text="${o.totalPrice}"></td>
+                    <td class="text-left"><a th:href="@{/getOrderProducts(id=${o.id})}">Zobrazit produkty</a></td>
+                    <td class="text-left"><a th:href="@{/removeOrder(id=${o.id})}">Odstranit</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div th:replace="fragments::footer"></div>
+</div>
+</body>
+</html>

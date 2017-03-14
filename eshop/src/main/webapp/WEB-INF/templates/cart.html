@@ -1,0 +1,51 @@
+<!doctype html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head th:replace="fragments::head"></head>
+
+<body>
+<div id="page" th:var="${cart}">
+    <div th:replace="fragments::#header"></div>
+    <div id="body">
+        <div class="header">
+            <div>
+                <h1>Nákupní košík</h1>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="contact">
+                <div class="table-title">
+                    <h1>Seznam produktů v košíku</h1>
+                </div>
+                <table class="table-fill" title="Zakoupené produkty" th:unless="${cart}==null">
+                    <thead>
+                    <tr>
+                        <th>Název produktu</th>
+                        <th>Kategorie</th>
+                        <th>Cena</th>
+                        <th>Odebrat</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    <tr th:each="p : ${cart.products}">
+                        <td class="text-left" th:text="${p.type}"></td>
+                        <td class="text-left" th:text="${p.category}"></td>
+                        <td class="text-left"
+                            th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 2, 'POINT')} + ' Kč'"></td>
+                        <td class="text-left"><a th:href="@{/removeProduct(id=${p.id})}">Odebrat</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4 th:if="${cart}!=null"
+                    th:text="'Celková cena: ' + ${#numbers.formatDecimal(cart.totalValue, 0, 'COMMA', 2, 'POINT')} + ' Kč'"></h4>
+
+                <form th:action="@{/order}" method="post">
+                    <input id="submit" type="submit" name="submit" value="Objednat"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments::#footer"></div>
+</div>
+</body>
+</html>
